@@ -1,0 +1,13 @@
+<span *ngIf="shouldDisplay">{{name}}</span>
+
+<hr />
+
+Name: <input type="text" name="firtName" [(ngModel)]="title" />
+{{title}}
+
+<button (click)="displayTitle()">Submit</button>
+
+<hr />
+<ul>
+  <li *ngFor="let emp of employees">{{emp.name}}</li>
+</ul>
