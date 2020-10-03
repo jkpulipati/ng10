@@ -1,14 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  OnDestroy,
+} from '@angular/core';
 
 import { HelperService } from '../helper.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
-
   @Input() title: string;
   @Input() employee: any;
 
@@ -16,27 +23,31 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
 
   shouldDisplay: boolean = true;
   name: string = 'JK';
-  employees: any = [{
-    name: 'Angular'
-  },
-  {
-    name: 'React'
-  },
-  {
-    name: 'Vue'
-  }];
+  employees: any = [
+    {
+      name: 'Angular',
+    },
+    {
+      name: 'React',
+    },
+    {
+      name: 'Vue',
+    },
+  ];
 
-  constructor(private helperService: HelperService) { }
+  constructor(private helperService: HelperService) {}
 
   ngOnInit(): void {
     console.log(this.title, this.employee);
+
+    // pass employees information to helper service
+    this.helperService.emp$.next(this.employees);
 
     // logic: trigger service call to receive the data from DB
   }
 
   ngOnChanges() {
     console.log('changes happened');
-
   }
 
   displayTitle() {
@@ -47,9 +58,7 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     this.updateName.emit(this.title);
   }
 
-
   ngOnDestroy() {
     console.log('destroyed');
   }
-
 }

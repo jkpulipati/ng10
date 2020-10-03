@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HelperService {
+  emp$: Subject<any> = new Subject();
 
-  employees: any = [{
-    name: 'Angular'
-  },
-  {
-    name: 'React'
-  },
-  {
-    name: 'Vue'
-  }];
+  employees: any = [];
 
   setEmps(value) {
     this.employees = value;
@@ -23,5 +17,9 @@ export class HelperService {
     return this.employees;
   }
 
-  constructor() { }
+  constructor() {}
+
+  getGridData() {
+    // service call using ob
+  }
 }
