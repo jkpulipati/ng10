@@ -14,9 +14,9 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.emps = this.helperService.getEmps();
 
-    this.helperService.emp$.subscribe((res) => {
-      this.emps = res;
-    });
+    // this.helperService.emp$.subscribe((res) => {
+    //   this.emps = res;
+    // });
 
     // this.helperService.getGridData()
   }
