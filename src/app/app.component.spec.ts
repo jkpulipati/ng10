@@ -5,14 +5,15 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      providers: [],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
+
+  afterEach(() => {
+    // memory clear
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -20,16 +21,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular10'`, () => {
+  it(`should have as title 'jk'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular10');
+    expect(app.title).toEqual('jk');
   });
 
-  it('should render title', () => {
+  it('updateName function test', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular10 app is running!');
+    const app = fixture.componentInstance;
+    app.updateName('javascript');
+
+    expect(app.employee.name).toEqual('javascript');
+  });
+
+  it('test function test', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.test();
+
+    expect(app).toBeTruthy();
   });
 });

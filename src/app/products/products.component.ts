@@ -39,13 +39,22 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private helperService: HelperService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.title, this.employee);
+    console.log(this.title, this.employee.name);
 
     // pass employees information to helper service
     // this.helperService.emp$.next(this.employees);
     this.helperService.setEmps(this.employees);
 
+    // getUsers
+    this.getUsers();
+
     // logic: trigger service call to receive the data from DB
+  }
+
+  getUsers() {
+    this.helperService.getusers().subscribe((res) => {
+      console.log('res', res);
+    });
   }
 
   ngOnChanges() {
@@ -53,11 +62,16 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   displayTitle() {
-    console.log(this.title);
+    console.log(this.title, this.employee.name);
     this.name = 'Angular';
     // this.shouldDisplay = false;
     // this.helperService.setEmps(this.employees);
     // this.updateName.emit(this.title);
+
+    // service call
+    this.helperService.getuserById().subscribe((res) => {
+      console.log(res);
+    });
 
     //navigate to users cmp
     this.router.navigate(['users']);
