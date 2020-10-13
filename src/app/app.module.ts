@@ -11,6 +11,8 @@ import { UsersComponent } from './users/users.component';
 
 import { HelperService } from './helper.service';
 import { SignupComponent } from './signup/signup.component';
+import { MoviesComponent } from './movies/movies.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { SignupComponent } from './signup/signup.component';
     ProductsComponent,
     UsersComponent,
     SignupComponent,
+    MoviesComponent,
+    MovieInfoComponent,
   ],
   imports: [
     BrowserModule,
